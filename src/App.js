@@ -4,8 +4,8 @@ import Layout from "./components/Layout";
 import SideBar from "./components/SideBar";
 import Content from "./components/Content";
 import Posts, { Post } from "./components/Posts";
-import posts from "./jsons/posts.json";
-import recentlys from "./jsons/recentlys.json";
+import posts from "./jsons/posts.js";
+import recentlys from "./jsons/recentlys.js";
 const NAVS = [
   {
     label: "github",

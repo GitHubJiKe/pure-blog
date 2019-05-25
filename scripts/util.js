@@ -19,10 +19,8 @@ exports.readLineContent = function readLineContent(_path, cb) {
   const rl = readline.createInterface({ input: input });
   let desc = "";
   let title = "";
-  let lineNum = 0;
   rl.on("line", res => {
-    if (res.startsWith("#") && lineNum < 2) {
-      //标题
+    if (res.startsWith("#") && !title) {
       title = res.split("#")[1].trim();
     }
     if (desc.length > 300) {
@@ -41,7 +39,6 @@ exports.readLineContent = function readLineContent(_path, cb) {
     let obj = exports.makePostTeml(title, desc, "");
     cb(null, obj);
   });
-  lineNum++;
 };
 
 exports.genJsons = async function genJsons(dirs, type) {
@@ -55,7 +52,7 @@ exports.genJsons = async function genJsons(dirs, type) {
     arr.push(obj);
   }
   fs.writeFileSync(
-    path.resolve(__dirname, `../src/jsons/${type}.json`),
-    JSON.stringify(arr)
+    path.resolve(__dirname, `../src/jsons/${type}.js`),
+    `const ${type} = ${JSON.stringify(arr)}; export default ${type};`
   );
 };
