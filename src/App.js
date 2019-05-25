@@ -1,25 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Layout from "./components/Layout";
+import SideBar from "./components/SideBar";
+import Content from "./components/Content";
+import Posts, { Post } from "./components/Posts";
+import posts from "./jsons/posts.json";
+import recentlys from "./jsons/recentlys.json";
+const NAVS = [
+  {
+    label: "github",
+    url: "https://github.com/GitHubJiKe"
+  },
+  {
+    label: "知乎",
+    url: "https://www.zhihu.com/people/ji-ke-yuan/activities"
+  }
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <SideBar navs={NAVS} />
+      <Content>
+        {recentlys.length > 0 && (
+          <Posts title="最近更新">
+            {recentlys.map((p, idx) => (
+              <Post key={idx} {...p} />
+            ))}
+          </Posts>
+        )}
+        {posts.length > 0 && (
+          <Posts title="全部日志">
+            {posts.map((p, idx) => (
+              <Post key={idx} {...p} />
+            ))}
+          </Posts>
+        )}
+      </Content>
+    </Layout>
   );
 }
 
