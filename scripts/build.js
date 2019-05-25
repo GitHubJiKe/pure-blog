@@ -44,9 +44,19 @@ function makeDirPostsAndRecently(blogName) {
   //先创建文件夹，再生成文件到指定目录
   transferMDToHtml(blogName, postsDirs, "posts");
   transferMDToHtml(blogName, recentlysDirs, "recentlys");
+  copyPictures(blogName);
   setTimeout(() => {
     publishBlog(blogName);
   }, 3000);
+}
+
+function copyPictures(blogName) {
+  execSync(
+    `cp -r ${path.resolve(__dirname, `../src/pictures`)} ${path.resolve(
+      __dirname,
+      `../${blogName}/pictures`
+    )} `
+  );
 }
 
 function getBodyContent(html, title) {
