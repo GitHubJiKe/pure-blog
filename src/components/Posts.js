@@ -16,28 +16,32 @@ const Tag = ({ label }) => (
 );
 
 export const Post = ({
-  postTitle,
+  title,
   description,
   link,
   author = "Peter Yuan",
+  date,
   tags = []
 }) => {
   return (
     <a className="post" href={link} style={{ textDecorationLine: "none" }}>
       <header className="post-header">
-        <h2 className="post-title">{postTitle}</h2>
+        <h2 className="post-title">{title}</h2>
         <p class="post-meta">
           By
           <a href="#" class="post-author" style={{ marginLeft: 10 }}>
             {author}
           </a>
-          {tags.length > 0 && "under"}
+          {tags.length > 0 && (
+            <label style={{ paddingLeft: 10, paddingRight: 10 }}>under</label>
+          )}
           {tags.map((t, idx) => (
             <Tag label={t} key={idx} />
           ))}
         </p>
       </header>
-      <div className="post-description">{description}</div>
+      {date && <div className="post-description">{date}</div>}
+      {description && <div className="post-description">{description}</div>}
     </a>
   );
 };

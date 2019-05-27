@@ -71,10 +71,11 @@ function getBodyContent(html, title) {
 function transferMDToHtml(blogName, dirs, type) {
   dirs.forEach(p => {
     const fileName = p.split(".md")[0];
-    const postContent = fs.readFileSync(
-      path.resolve(__dirname, `../src/${type}/${p}`)
-    );
-    const postHtml = convert.makeHtml(postContent.toString());
+    const postContent = fs
+      .readFileSync(path.resolve(__dirname, `../src/${type}/${p}`))
+      .toString();
+
+    const postHtml = convert.makeHtml(postContent.split("---")[2]);
     fs.writeFileSync(
       path.resolve(__dirname, `../${blogName}/${type}/${fileName}.html`),
       getBodyContent(postHtml, fileName)

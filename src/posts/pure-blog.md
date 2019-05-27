@@ -1,3 +1,11 @@
+---
+title: Pure Blog
+author: Peter Yuan
+date: 2019-05-27
+description: pure blog based on React& Purecss
+tags: react,showdown,purecss
+---
+
 # Pure Blog
 
 > based on [React](https://reactjs.org/) & [Purecss](https://purecss.io/)
