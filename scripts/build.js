@@ -12,26 +12,10 @@ const convert = new showdown.Converter();
 
 function buildBlog(blogName) {
   console.log("开始构建博客工程");
-  let buildPath = path.resolve(__dirname, "../build");
   let blogPath = getBlogPath(blogName);
-  execSync(`rm -rf ${buildPath}`);
   execSync(`rm -rf ${blogPath}`);
-  execSync("yarn build");
+  execSync("npm run mybuild");
   //两秒之后，确保编译已完成执行后续操作
-  setTimeout(() => {
-    copyBolg(blogName);
-  }, 2000);
-}
-
-function copyBolg(blogName) {
-  console.log("开始新建blog目录，并拷贝项目文件");
-  execSync(
-    `cp -r ${path.resolve(__dirname, `../build`)} ${path.resolve(
-      __dirname,
-      `../${blogName}`
-    )} `
-  );
-  //两秒之后，执行copy等操作
   setTimeout(() => {
     makeDirPostsAndRecently(blogName);
   }, 2000);

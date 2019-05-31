@@ -10,7 +10,7 @@ const Posts = ({ children, title }) => {
 };
 
 const Tag = ({ label }) => (
-  <a class="post-category post-category-pure" href="#">
+  <a className="post-category post-category-pure" href="#">
     {label}
   </a>
 );
@@ -27,9 +27,9 @@ export const Post = ({
     <a className="post" href={link} style={{ textDecorationLine: "none" }}>
       <header className="post-header">
         <h2 className="post-title">{title}</h2>
-        <p class="post-meta">
+        <p className="post-meta">
           By
-          <a href="#" class="post-author" style={{ marginLeft: 10 }}>
+          <a href="#" className="post-author" style={{ marginLeft: 10 }}>
             {author}
           </a>
           {tags.length > 0 && (

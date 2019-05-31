@@ -1,7 +1,32 @@
 @import "./layouts/blog.css";
 @import "./layouts/blog-old-ie.css";
+@import "../node_modules/antd/dist/antd.css";
 
 html,
 body {
   margin: 0;
+}
+
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+  border-radius: 50%;
+  background-image: url(https://avatars0.githubusercontent.com/u/15058227?s=460&v=4);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
